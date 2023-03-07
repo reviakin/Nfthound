@@ -1,12 +1,14 @@
 
 import React from 'react';
 
+
 type TProps = {
-  children: React.ReactNode;
+  value?: any;
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
 }
 
-const Input = React.memo(() => {
-  return <input />
+const Input = React.memo<TProps>(({ value, onChange }) => {
+  return <input value={value} onChange={onChange} />
 })
 
 export default Input;
