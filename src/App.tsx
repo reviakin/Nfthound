@@ -44,10 +44,12 @@ function App() {
     <Layout>
       {selectedNft && (
         <NftModal
+          address={selectedNft.contract.address}
           mediaSrc={selectedNft.media[0]?.thumbnail!}
           title={selectedNft.title}
           description={selectedNft.description}
-          address={`${selectedNft.contract.address}/${selectedNft.tokenId}`}
+          openseaQuery={`${selectedNft.contract.address}/${selectedNft.tokenId}`}
+          close={() => setSelectedNft(null)}
         />
       )}
       <Input value={address} onChange={handleInputChange} />

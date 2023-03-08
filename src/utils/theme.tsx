@@ -1,33 +1,37 @@
-import React from 'react';
-import 'styled-components';
-import { createGlobalStyle, ThemeProvider as BaseThemeProvider } from 'styled-components';
+import React from "react";
+import "styled-components";
+import {
+  createGlobalStyle,
+  ThemeProvider as BaseThemeProvider,
+} from "styled-components";
 
-const theme = {
+export const theme = {
   colors: {
-    primary: '#0D4DF2',
-    onPrimary: '#FFFFFF',
-    secondary: '#9EB8FA',
-    successful: '#AEEAB0',
-    error: '#FE9C9A',
-    background: '#0D0D0D',
-    onBackground: '#FFFFFF',
-    surface: '#17181C',
-    onSurface: '#C7C9D1',
+    primary: "#0D4DF2",
+    onPrimary: "#FFFFFF",
+    secondary: "#9EB8FA",
+    successful: "#AEEAB0",
+    error: "#FE9C9A",
+    background: "#0D0D0D",
+    onBackground: "#FFFFFF",
+    surface: "#17181C",
+    onSurface: "#C7C9D1",
+    outline: "#9093A2",
   },
   fontSizes: {
-    fz12: '12px',
-    fz13: '13px',
-    fz14: '14px',
-    fz16: '16px',
-    fz18: '18px',
-    fz20: '20px',
-    fz24: '24px',
-    fz28: '28px',
-    fz32: '32px',
-    fz36: '36px',
-    fz44: '44px',
-    fz56: '56px',
-    fz64: '64px',
+    fz12: "12px",
+    fz13: "13px",
+    fz14: "14px",
+    fz16: "16px",
+    fz18: "18px",
+    fz20: "20px",
+    fz24: "24px",
+    fz28: "28px",
+    fz32: "32px",
+    fz36: "36px",
+    fz44: "44px",
+    fz56: "56px",
+    fz64: "64px",
   },
   spaces: {
     s0: 0,
@@ -75,21 +79,21 @@ const theme = {
     s45: 90,
     s60: 120,
     s64: 128,
-  }
+  },
 } as const;
 
 export type TTheme = typeof theme;
 
-declare module 'styled-components' {
-  export interface DefaultTheme extends TTheme { }
+declare module "styled-components" {
+  export interface DefaultTheme extends TTheme {}
 }
 
 type TProps = {
   children: React.ReactNode;
-}
+};
 const GlobalStyle = createGlobalStyle<{ theme: typeof theme }>`
   body {
-    color: ${props => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.background};
     height: 100%;
     min-height: 100vh;
   }
@@ -111,12 +115,12 @@ button {
   -moz-box-shadow: none;
   box-shadow: none;  
   }
-  `
-const ThemeProvider = React.memo<TProps>(({ children }) =>
+  `;
+const ThemeProvider = React.memo<TProps>(({ children }) => (
   <BaseThemeProvider theme={theme}>
     <GlobalStyle />
     {children}
   </BaseThemeProvider>
-);
+));
 
 export default ThemeProvider;

@@ -19,7 +19,11 @@ const Cards = React.memo<TProps>(({ items, setSelectedNft }) => {
           return !!title;
         })
         .map((nft) => (
-          <Card {...nft} key={nft.tokenId} setSelectedNft={setSelectedNft} />
+          <Card
+            {...nft}
+            key={nft.contract.address}
+            setSelectedNft={setSelectedNft}
+          />
         ))}
     </S.CardsContainer>
   );

@@ -1,10 +1,9 @@
 import { Network, Alchemy } from "alchemy-sdk";
 
-const apiKye = process.env.REACT_APP_ALCHEMY_API_KEY;
-console.log(apiKye);
+const apiKey = process.env.REACT_APP_ALCHEMY_API_KEY;
 
 const settings = {
-  apiKey: "8ClxdIclOv_AqAlTb1juM6kijvZa_HDQ",
+  apiKey,
   network: Network.ETH_MAINNET,
 };
 
