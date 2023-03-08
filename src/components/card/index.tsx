@@ -5,12 +5,11 @@ import * as S from './style'
 type TProps = OwnedNft;
 const Card = React.memo<TProps>(({ title, media }) => {
 
-  // TODO handle if type isn't png
-  const imageSrc = media.find(mediaItem => mediaItem.thumbnail);
+  const nftMedia = media[0];
 
   return <S.Card>
     <S.Title>{title}</S.Title>
-    {imageSrc && <img src={imageSrc?.thumbnail ?? imageSrc?.gateway} />}
+    {nftMedia && <S.Image src={nftMedia?.thumbnail ?? nftMedia?.gateway} />}
     </S.Card>
 })
 

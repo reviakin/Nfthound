@@ -17,6 +17,11 @@ ${props => css`
 
 `
 
+export const Image = styled.img`
+width: 250px;
+height: 250px;
+`
+
 export const Card = styled.div`
 ${props => css`
 
