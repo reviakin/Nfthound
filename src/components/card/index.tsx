@@ -2,13 +2,15 @@ import { OwnedNft } from "alchemy-sdk";
 import React from "react";
 import * as S from "./style";
 
-type TProps = OwnedNft;
-const Card = React.memo<TProps>(({ title, media }) => {
-  const nftMedia = media[0];
+type TProps = {
+  setSelectedNft: (payload: OwnedNft) => void;
+} & OwnedNft;
+const Card = React.memo<TProps>(({ setSelectedNft, ...nft }) => {
+  const nftMedia = nft.media[0];
 
   return (
-    <S.Card>
-      <S.Title>{title}</S.Title>
+    <S.Card onClick={() => setSelectedNft(nft)}>
+      <S.Title>{nft.title}</S.Title>
       {nftMedia && <S.Image src={nftMedia?.thumbnail ?? nftMedia?.gateway} />}
     </S.Card>
   );

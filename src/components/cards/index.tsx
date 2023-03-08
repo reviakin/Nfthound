@@ -5,9 +5,10 @@ import * as S from "./style";
 
 type TProps = {
   items: OwnedNft[];
+  setSelectedNft: (payload: OwnedNft) => void;
 };
 
-const Cards = React.memo<TProps>(({ items }) => {
+const Cards = React.memo<TProps>(({ items, setSelectedNft }) => {
   return (
     <S.CardsContainer>
       {items
@@ -18,7 +19,7 @@ const Cards = React.memo<TProps>(({ items }) => {
           return !!title;
         })
         .map((nft) => (
-          <Card {...nft} key={nft.tokenId} />
+          <Card {...nft} key={nft.tokenId} setSelectedNft={setSelectedNft} />
         ))}
     </S.CardsContainer>
   );

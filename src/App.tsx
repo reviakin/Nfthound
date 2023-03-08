@@ -1,15 +1,17 @@
 import React from "react";
 import { OwnedNft } from "alchemy-sdk";
 import { useQuery } from "react-query";
-import alchemy from "./alchemy";
-import { Input, Button, Layout, Cards, Error } from "./components";
+import alchemy from "./utils/alchemy";
+import { Input, Button, Layout, Cards, Error, NftModal } from "./components";
 
-const a = "0x0AC2185374664768Ac7C44f9674a3c82ab31Ce67";
 const PAGE_SIZE = 20;
 
 function App() {
-  const [address, setAddress] = React.useState(a);
+  const [address, setAddress] = React.useState(
+    "0x0AC2185374664768Ac7C44f9674a3c82ab31Ce67"
+  );
   const [nftList, setNftList] = React.useState<OwnedNft[]>([]);
+  const [selectedNft, setSelectedNft] = React.useState<OwnedNft | null>(null);
   const [pageKey, setPageKey] = React.useState<null | string>(null);
 
   // TODO add debounce
@@ -40,11 +42,19 @@ function App() {
 
   return (
     <Layout>
+      {selectedNft && (
+        <NftModal
+          mediaSrc={selectedNft.media[0]?.thumbnail!}
+          title={selectedNft.title}
+          description={selectedNft.description}
+          address={`${selectedNft.contract.address}/${selectedNft.tokenId}`}
+        />
+      )}
       <Input value={address} onChange={handleInputChange} />
       {error ? (
         <Error message={"Something went wrong..."} />
       ) : (
-        <Cards items={nftList} />
+        <Cards items={nftList} setSelectedNft={setSelectedNft} />
       )}
       {pageKey && (
         <Button isDisabled={isLoading} onClick={() => !isLoading && refetch()}>
