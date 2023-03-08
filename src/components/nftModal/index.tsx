@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
-import { theme } from "../../utils/theme";
+import { theme } from "../../utils";
 import Button from "../button";
 import * as S from "./style";
 

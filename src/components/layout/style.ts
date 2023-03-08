@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import media from "../../utils/media";
+import { media } from "../../utils";
 
 export const Layout = styled.div`
   display: flex;

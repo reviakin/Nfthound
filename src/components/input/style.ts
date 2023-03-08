@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import media from "../../utils/media";
+import { media } from "../../utils";
 
 export const Input = styled.input`
   ${(props) => css`
