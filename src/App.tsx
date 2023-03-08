@@ -2,7 +2,7 @@ import { OwnedNft } from "alchemy-sdk";
 import React from "react";
 import { useQuery } from "react-query";
 import alchemy from "./alchemy";
-import { Input, Card, Button } from './components'
+import { Input, Button, Layout, Cards } from './components'
 
 const a = '0x0AC2185374664768Ac7C44f9674a3c82ab31Ce67';
 const PAGE_SIZE = 20;
@@ -26,13 +26,12 @@ function App() {
   )
 
   return (
-    <div>
+    <Layout>
+      {/* TODO add debounce */}
       <Input value={address} onChange={e => setAddress(e.target.value)} />
-      <div>
-        {nftList.map(nft => <Card {...nft} key={nft.tokenId} />)}
-      </div>
+      <Cards items={nftList} />
       {pageKey && <Button onClick={() => refetch()}>load more</Button>}
-    </div>
+    </Layout>
   );
 }
 
