@@ -1,5 +1,6 @@
 
 import React from 'react';
+import * as S from './style';
 
 
 type TProps = {
@@ -8,7 +9,7 @@ type TProps = {
 }
 
 const Input = React.memo<TProps>(({ value, onChange }) => {
-  return <input value={value} onChange={onChange} />
+  return <S.Input value={value} onChange={onChange} />
 })
 
 export default Input;
