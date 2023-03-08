@@ -1,14 +1,14 @@
 import React from "react";
 import { OwnedNft } from "alchemy-sdk";
 import { useQuery } from "react-query";
-import { alchemy } from "./utils";
+import { alchemy, projectName } from "./utils";
 import { Input, Button, Layout, Cards, Error, NftModal } from "./components";
 
 const PAGE_SIZE = 20;
 
 function App() {
   React.useEffect(() => {
-    console.log();
+    console.log(projectName);
   }, []);
   const [address, setAddress] = React.useState(
     "0x0AC2185374664768Ac7C44f9674a3c82ab31Ce67"
