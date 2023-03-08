@@ -5,6 +5,7 @@ import { createGlobalStyle, ThemeProvider as BaseThemeProvider } from 'styled-co
 const theme = {
   colors: {
     primary: '#0D4DF2',
+    onPrimary: '#FFFFFF',
     secondary: '#9EB8FA',
     successful: '#AEEAB0',
     error: '#FE9C9A',

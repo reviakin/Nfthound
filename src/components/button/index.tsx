@@ -1,4 +1,5 @@
 import React from 'react';
+import * as S from './style';
 
 type TProps = {
   children: React.ReactNode;
@@ -6,7 +7,7 @@ type TProps = {
 }
 
 const Button = React.memo<TProps>(({ children, onClick }) => {
-  return <button onClick={onClick}>{children}</button>
+  return <S.Button onClick={onClick}>{children}</S.Button>
 })
 
 export default Button;

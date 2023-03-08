@@ -30,7 +30,7 @@ function App() {
       {/* TODO add debounce */}
       <Input value={address} onChange={e => setAddress(e.target.value)} />
       <Cards items={nftList} />
-      {pageKey && <Button onClick={() => refetch()}>load more</Button>}
+      {pageKey && <Button onClick={() => refetch()}>More</Button>}
     </Layout>
   );
 }
