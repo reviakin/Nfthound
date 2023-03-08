@@ -14,7 +14,7 @@ function App() {
 
   // TODO add debounce
   const { refetch, isLoading, error } = useQuery(
-    ["ownedNftList", address, pageKey],
+    ["ownedNftList"],
     () =>
       alchemy.nft.getNftsForOwner(address, {
         ...(pageKey && { pageKey }),
