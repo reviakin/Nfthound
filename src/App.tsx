@@ -11,7 +11,7 @@ function App() {
   const [nftList, setNftList] = React.useState<OwnedNft[]>([]);
   const [pageKey, setPageKey] = React.useState<null | string>(null);
 
-  const { refetch } = useQuery(
+  const { refetch, isLoading, error } = useQuery(
     ['ownedNftList', address],
     () => {
       return alchemy.nft.getNftsForOwner(address, { ...(pageKey && { pageKey }), pageSize: PAGE_SIZE });
@@ -30,7 +30,7 @@ function App() {
       {/* TODO add debounce */}
       <Input value={address} onChange={e => setAddress(e.target.value)} />
       <Cards items={nftList} />
-      {pageKey && <Button onClick={() => refetch()}>More</Button>}
+      {pageKey && <Button isDisabled={isLoading} onClick={() => !isLoading && refetch()}>{isLoading ? 'Loading...' : 'More'}</Button>}
     </Layout>
   );
 }
