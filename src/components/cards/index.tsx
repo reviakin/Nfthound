@@ -7,9 +7,9 @@ type TProps = {
   items: OwnedNft[];
 }
 const Cards = React.memo<TProps>(({ items }) => {
-  return <S.CardContainer>
+  return <S.CardsContainer>
     {items.map(nft => <Card {...nft} key={nft.tokenId} />)}
-  </S.CardContainer>
+  </S.CardsContainer>
 })
 
 export default Cards;
